@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Generate a strong, private password directly in your browser."
+    />
+    <meta name="theme-color" content="#11100f" />
+    <title>Password Generator · Satifyy</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./app.mjs"></script>
+  </head>
+  <body>
+    <main class="shell">
+      <section class="generator" aria-labelledby="page-title">
+        <header class="intro">
+          <a class="brand" href="https://satifyy.com" aria-label="Satifyy home">
+            <span class="brand-mark" aria-hidden="true">S</span>
+            <span>Satifyy</span>
+          </a>
+          <p class="eyebrow">Private by design</p>
+          <h1 id="page-title">A strong password, instantly.</h1>
+          <p class="lede">
+            Generated on your device. Nothing is sent, saved, or tracked.
+          </p>
+        </header>
+
+        <div class="password-card">
+          <div class="password-row">
+            <div
+              id="password-output"
+              class="password-output"
+              tabindex="0"
+              aria-label="Generated password"
+            ></div>
+            <button id="copy-button" class="icon-button" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="8" y="8" width="11" height="11" rx="2"></rect>
+                <path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"></path>
+              </svg>
+              <span id="copy-label">Copy</span>
+            </button>
+          </div>
+
+          <button id="generate-button" class="primary-button" type="button">
+            Generate new password
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20 11a8.1 8.1 0 1 1-2.3-5.7L20 7.5"></path>
+              <path d="M20 3v4.5h-4.5"></path>
+            </svg>
+          </button>
+        </div>
+
+        <form class="controls" aria-label="Password options">
+          <div class="length-control">
+            <div class="control-heading">
+              <label for="length">Password length</label>
+              <output id="length-value" for="length">20</output>
+            </div>
+            <input id="length" type="range" min="8" max="64" value="20" />
+            <div class="range-labels" aria-hidden="true">
+              <span>8</span>
+              <span>64</span>
+            </div>
+          </div>
+
+          <fieldset>
+            <legend>Character types</legend>
+            <div class="option-grid">
+              <label class="option">
+                <input type="checkbox" name="group" value="uppercase" checked />
+                <span>Uppercase</span>
+                <small>A–Z</small>
+              </label>
+              <label class="option">
+                <input type="checkbox" name="group" value="lowercase" checked />
+                <span>Lowercase</span>
+                <small>a–z</small>
+              </label>
+              <label class="option">
+                <input type="checkbox" name="group" value="numbers" checked />
+                <span>Numbers</span>
+                <small>0–9</small>
+              </label>
+              <label class="option">
+                <input type="checkbox" name="group" value="symbols" checked />
+                <span>Symbols</span>
+                <small>!@#$</small>
+              </label>
+            </div>
+          </fieldset>
+        </form>
+
+        <p id="status" class="status" role="status"></p>
+      </section>
+
+      <footer>
+        <span class="privacy-dot" aria-hidden="true"></span>
+        Your password never leaves this browser.
+      </footer>
+    </main>
+  </body>
+</html>
