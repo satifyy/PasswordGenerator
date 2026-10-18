@@ -1,0 +1,21 @@
+# Environment files and secrets
+.env
+.env.*
+!.env.example
+
+# Deployment metadata
+.vercel/
+
+# Dependencies
+node_modules/
+
+# Test and language caches
+.pytest_cache/
+__pycache__/
+*.py[cod]
+coverage/
+
+# Local editor and OS files
+.DS_Store
+*.swp
+.vercel
