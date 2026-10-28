@@ -4,7 +4,11 @@ const GUESSES_PER_SECOND = 1_000_000_000_000;
 
 function formatDuration(seconds) {
   if (seconds < 1) return "Less than a second";
-  if (seconds >= 1e10) return "Past centuries";
+  if (!Number.isFinite(seconds)) return "More than 1e308 seconds";
+  if (seconds >= 1e10) {
+    const years = seconds / 31_557_600;
+    return `About ${years.toExponential(2)} years`;
+  }
 
   const units = [
     [31_557_600, "year"],

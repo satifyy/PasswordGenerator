@@ -9,8 +9,11 @@ test("estimates time from password length and character pool size", () => {
 });
 
 test("returns a human readable long estimate", () => {
-  assert.equal(
-    estimateCrackTime({ length: 20, enabledGroups: ["uppercase", "lowercase", "numbers", "symbols"] }),
-    "Past centuries",
-  );
+  const estimate = estimateCrackTime({ length: 20, enabledGroups: ["uppercase", "lowercase", "numbers", "symbols"] });
+  assert.match(estimate, /^About [\d.]+e\+\d+ years$/);
+});
+
+test("keeps a numeric estimate at the maximum supported length", () => {
+  const estimate = estimateCrackTime({ length: 64, enabledGroups: ["uppercase", "lowercase", "numbers", "symbols"] });
+  assert.match(estimate, /^About [\d.]+e\+\d+ years$/);
 });
