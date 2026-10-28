@@ -11,6 +11,6 @@ test("estimates time from password length and character pool size", () => {
 test("returns a human readable long estimate", () => {
   assert.equal(
     estimateCrackTime({ length: 20, enabledGroups: ["uppercase", "lowercase", "numbers", "symbols"] }),
-    "Centuries",
+    "Past centuries",
   );
 });
