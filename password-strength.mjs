@@ -1,13 +1,34 @@
 import { CHARACTER_GROUPS } from "./password-generator.mjs";
 
 const GUESSES_PER_SECOND = 1_000_000_000_000;
+const LARGE_NUMBER_NAMES = [
+  "thousand", "million", "billion", "trillion", "quadrillion", "quintillion",
+  "sextillion", "septillion", "octillion", "nonillion", "decillion",
+  "undecillion", "duodecillion", "tredecillion", "quattuordecillion",
+  "quindecillion", "sexdecillion", "septendecillion", "octodecillion",
+  "novemdecillion", "vigintillion", "unvigintillion", "duovigintillion",
+  "tresvigintillion", "quattuorvigintillion", "quinvigintillion",
+  "sesvigintillion", "septemvigintillion", "octovigintillion",
+  "novemvigintillion", "trigintillion", "untrigintillion", "duotrigintillion",
+  "trestrigintillion", "quattuortrigintillion",
+];
+
+function spellLargeYears(years) {
+  const exponent = Math.floor(Math.log10(years));
+  const group = Math.floor(exponent / 3);
+  if (group === 0) return `${Math.round(years).toLocaleString("en-US")} years`;
+  const name = LARGE_NUMBER_NAMES[group - 1];
+  if (!name) return `${years.toExponential(2)} years`;
+  const leading = years / (10 ** (group * 3));
+  return `${leading.toFixed(2)} ${name} years`;
+}
 
 function formatDuration(seconds) {
   if (seconds < 1) return "Less than a second";
   if (!Number.isFinite(seconds)) return "More than 1e308 seconds";
   if (seconds >= 1e10) {
     const years = seconds / 31_557_600;
-    return `About ${years.toExponential(2)} years`;
+    return `About ${spellLargeYears(years)} (${years.toExponential(2)} years)`;
   }
 
   const units = [
