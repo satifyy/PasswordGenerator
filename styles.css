@@ -133,6 +133,23 @@ h1 {
   letter-spacing: 0.03em;
 }
 
+.strength-estimate {
+  display: grid;
+  gap: 0.3rem;
+  padding: 0 0.55rem 1rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.strength-estimate strong {
+  color: var(--accent);
+  font-size: 1rem;
+}
+
+.strength-estimate small {
+  font-size: 0.72rem;
+}
+
 button {
   border: 0;
   cursor: pointer;

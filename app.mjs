@@ -8,6 +8,7 @@ const lengthInput = document.querySelector("#length");
 const lengthValue = document.querySelector("#length-value");
 const groupInputs = [...document.querySelectorAll('input[name="group"]')];
 const status = document.querySelector("#status");
+const crackTime = document.querySelector("#crack-time");
 
 function enabledGroups() {
   return groupInputs.filter((input) => input.checked).map((input) => input.value);
@@ -15,7 +16,7 @@ function enabledGroups() {
 
 function updatePassword() {
   updatePasswordView(
-    { passwordOutput, copyButton, copyLabel, status },
+    { passwordOutput, copyButton, copyLabel, status, crackTime },
     {
       length: Number(lengthInput.value),
       enabledGroups: enabledGroups(),
